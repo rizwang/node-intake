@@ -552,3 +552,31 @@ If you encounter any issues:
 
 ISC
 
+
+## AI Tools Used
+- Tool(s): Cursor and Google Gemini
+- First i upload all files to get the requirement in a net shell and then create a structure and than give prompt to cursor.
+
+## High-impact Prompts (3–6 examples)
+1- A web interface where users submit their name, email, urgency level, and a description of their issue.
+2- A backend logic layer that scans the description for keywords (e.g., "invoice" for billing or "bug" for technical support) to assign a category automatically upon creation.
+3- A protected area where staff can view a list of intakes (filterable by status/category), view specific details, and update internal notes or ticket status.
+4- Four endpoints to handle creating, listing (with filtering/sorting), retrieving, and updating intake records.
+
+1. Prompt goal:
+   - What you asked for: Frontend will be in client folder and backend will in server folder
+   - What you received: got same as it is but it create sperate package.json
+   - How you validated / adjusted it: I then create a root package.json file to run the project from one command instead of starting frontend and backend server separately 
+
+
+## One example where AI was wrong (required)
+- What the AI suggested: AI suggested to start server separately
+- Why it was incorrect: for test you need to go into two folders to install dependencies and npm command to start
+- How you detected the issue: when i check the code and want to install the dependencies.
+- What you changed: I added package.json file where i mention command to go in folders and run the commands from one file.
+
+## Verification Approach
+- Tests you wrote:
+   1- Happy Path: POST /api/intakes creates a record and returns a 201 with the correct heuristic category.
+   2- Validation Failure: POST /api/intakes with a missing email returns a 400 Bad Request.
+   3- Auth Check: GET /api/intakes (admin list) returns a 401 if the Authorization header is missing or incorrect.
